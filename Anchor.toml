@@ -1,0 +1,19 @@
+[toolchain]
+package_manager = "yarn"
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+escrow = "BG7WeJAmBHiBEZHdBXFhiooQRSuBwNeRj8vVBKzmYUYY"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "localnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test="npx tsx create-codama-client.ts; npx tsx --test --no-warnings tests/*.ts"
