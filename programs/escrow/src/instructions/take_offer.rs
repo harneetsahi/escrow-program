@@ -96,7 +96,7 @@ pub fn take_offer_handler(ctx: Context<TakeOffer>) -> Result <()> {
       signer_seeds
    ).map_err(|_| ErrorCode::FailedVaultWithdrawal)?;
 
-  
+   
   // close vault
   close_token_account(
       &ctx.accounts.vault, 
@@ -106,9 +106,10 @@ pub fn take_offer_handler(ctx: Context<TakeOffer>) -> Result <()> {
       signer_seeds,
     ).map_err(|_| ErrorCode::FailedVaultClosure)?;
 
-  // taker to maker
+
+  // transfer tokens from taker to maker
   transfer_tokens(
-      &ctx.accounts.taker_token_account_a,
+      &ctx.accounts.taker_token_account_b,
       &ctx.accounts.maker_token_account_b, 
       &ctx.accounts.offer.token_b_wanted_amount, 
       &ctx.accounts.token_mint_b, 
