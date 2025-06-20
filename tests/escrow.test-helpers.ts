@@ -40,7 +40,7 @@ export async function createTestOffer(params: {
 
   const offerPDAAndBump = await connection.getPDAAndBump(
     programClient.ESCROW_PROGRAM_ADDRESS,
-    ["offer", offerId]
+    ["offer", maker.address, offerId]
   );
   const offer = offerPDAAndBump.pda;
   const vault = await connection.getTokenAccountAddress(
